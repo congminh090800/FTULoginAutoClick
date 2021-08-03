@@ -1,5 +1,6 @@
 const puppeteer = require("puppeteer");
-
+var username = process.argv[2];
+var password = process.argv[3];
 (async () => {
     const url = "http://ftugate.ftu.edu.vn/default.aspx?page=gioithieu&fbclid=IwAR3bbFbRIAxVVSuZuDX1NR6VC_H10NKwqFIeUIeHRTMh8dYUtyDysGH5vAw";
     const browser = await puppeteer.launch(
@@ -13,8 +14,8 @@ const puppeteer = require("puppeteer");
         waitUntil: 'networkidle2',
     });
     while(true) {
-        await page.type('input[id="ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_txtTaiKhoa"]', '2011530029');
-        await page.type('input[id="ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_txtMatKhau"]', '245417190');
+        await page.type('input[id="ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_txtTaiKhoa"]', username);
+        await page.type('input[id="ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_txtMatKhau"]', password);
         await page.click('input[id="ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_btnDangNhap"]', {delay: 500});
         await page.waitForNavigation({
             waitUntil: 'networkidle2',
