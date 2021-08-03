@@ -13,7 +13,7 @@ const puppeteer = require("puppeteer");
         waitUntil: 'networkidle2',
     });
     while(true) {
-        await page.type('input[id="ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_txtTaiKhoa"]', '2013550021');
+        await page.type('input[id="ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_txtTaiKhoa"]', '2011530029');
         await page.type('input[id="ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_txtMatKhau"]', '245417190');
         await page.click('input[id="ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_btnDangNhap"]', {delay: 500});
         await page.waitForNavigation({
@@ -21,6 +21,8 @@ const puppeteer = require("puppeteer");
         }) 
         let result = await page.evaluate( async () => {
             const failed = document.getElementById("ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_lblError");
+            document.getElementById("ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_txtTaiKhoa").value = "";
+            document.getElementById("ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_txtMatKhau").value = "";
             if (failed) {
                 return false;
             }
